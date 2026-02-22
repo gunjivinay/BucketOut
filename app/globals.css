@@ -1,0 +1,423 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --brand-bg: #0e4b62;
+  --brand-bg-dark: #0b4054;
+}
+
+body {
+  @apply bg-[#f5f8fa] text-slate-900 antialiased;
+  font-family: "Inter", sans-serif;
+}
+
+.hero-grid {
+  background-color: var(--brand-bg);
+  background-image: radial-gradient(120% 90% at 80% 22%, rgba(62, 193, 234, 0.14) 0%, rgba(62, 193, 234, 0) 62%),
+    radial-gradient(85% 80% at 18% 72%, rgba(20, 114, 148, 0.16) 0%, rgba(20, 114, 148, 0) 58%),
+    linear-gradient(110deg, var(--brand-bg-dark) 0%, var(--brand-bg) 52%, #10556e 100%);
+  box-shadow: inset 0 0 0 1px rgba(81, 196, 234, 0.18);
+}
+
+.phone-shell {
+  border-radius: 3.2rem;
+  border: 1px solid rgba(122, 214, 242, 0.35);
+  background: linear-gradient(140deg, rgba(11, 52, 76, 0.75), rgba(5, 27, 41, 0.85));
+  box-shadow: 0 26px 56px rgba(1, 8, 14, 0.5);
+  padding: 0.38rem;
+}
+
+.phone-screen {
+  position: relative;
+  border-radius: 2.8rem;
+  background: #02060b;
+  padding: 1.3rem 1.2rem 1.1rem;
+  overflow: hidden;
+}
+
+.phone-feed-wrap {
+  height: 22rem;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000 10%, #000 90%, rgba(0, 0, 0, 0));
+}
+
+.phone-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: phoneFeedMove 18s linear infinite;
+}
+
+.phone-task-card {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr auto;
+  gap: 0.9rem;
+  align-items: start;
+  border-radius: 1.2rem;
+  background: #1b1d24;
+  border: 1px solid rgba(129, 150, 197, 0.18);
+  padding: 0.95rem;
+}
+
+.phone-task-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.8rem;
+  background: #0b1118;
+  overflow: hidden;
+}
+
+.phone-task-icon img {
+  width: 1.45rem;
+  height: 1.45rem;
+  object-fit: contain;
+}
+
+.accept-pill {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(38, 196, 239, 0.35);
+  background: rgba(4, 23, 37, 0.9);
+  padding: 0.5rem 0.8rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #dff7ff;
+  animation: acceptPulse 2.8s ease-in-out infinite;
+}
+
+.store-badge-image {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19rem;
+  height: 5.6rem;
+  border-radius: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.store-badge-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: inherit;
+}
+
+.store-badge-play {
+  box-shadow: 0 0 0 1px rgba(100, 255, 172, 0.36), 0 0 26px rgba(67, 230, 156, 0.36);
+}
+
+.store-badge-app {
+  box-shadow: 0 0 0 1px rgba(235, 244, 255, 0.34), 0 0 26px rgba(179, 212, 247, 0.33);
+}
+
+.store-badge-image:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.store-badge-play:hover {
+  box-shadow: 0 0 0 1px rgba(118, 255, 182, 0.5), 0 0 34px rgba(70, 232, 160, 0.5);
+}
+
+.store-badge-app:hover {
+  box-shadow: 0 0 0 1px rgba(246, 251, 255, 0.48), 0 0 34px rgba(188, 223, 255, 0.46);
+}
+
+@media (max-width: 640px) {
+  .store-badge-image {
+    width: 16.5rem;
+    height: 4.9rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .phone-feed-wrap {
+    height: min(49vh, 29.5rem);
+  }
+}
+
+.sparkle {
+  animation: sparklePulse 2.8s ease-in-out infinite;
+}
+
+.floaty {
+  animation: floaty 3.6s ease-in-out infinite;
+}
+
+.tap-finger {
+  animation: tapPress 1.8s ease-in-out infinite;
+}
+
+.tap-ring {
+  animation: tapRing 1.8s ease-out infinite;
+}
+
+.task-fly {
+  animation: taskFly 3.2s ease-in-out infinite;
+}
+
+.tasks-board {
+  @apply relative grid h-[620px] grid-cols-1 gap-5 overflow-hidden rounded-[2rem] bg-[#dce7fb] p-5 md:grid-cols-2;
+}
+
+.tasks-board::before,
+.tasks-board::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 48px;
+  pointer-events: none;
+}
+
+.tasks-board::before {
+  top: 0;
+  background: linear-gradient(to bottom, #dce7fb 20%, rgba(220, 231, 251, 0));
+}
+
+.tasks-board::after {
+  bottom: 0;
+  background: linear-gradient(to top, #dce7fb 20%, rgba(220, 231, 251, 0));
+}
+
+.tasks-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  will-change: transform;
+  animation: tasksUp 24s linear infinite;
+}
+
+.tasks-track-delayed {
+  animation-delay: -7s;
+}
+
+.tasks-track-reverse {
+  animation-name: tasksDown;
+}
+
+.task-card {
+  @apply flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm;
+}
+
+.task-thumb {
+  @apply flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-[#dbe7ff] text-3xl font-semibold text-[#1b52d1];
+}
+
+.deals-row {
+  @apply relative overflow-hidden;
+}
+
+.deals-row::before,
+.deals-row::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  height: 100%;
+  width: 90px;
+  pointer-events: none;
+}
+
+.deals-row::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0));
+}
+
+.deals-row::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff 10%, rgba(255, 255, 255, 0));
+}
+
+.deals-track {
+  display: flex;
+  width: max-content;
+  gap: 1.2rem;
+  will-change: transform;
+  animation: dealsLeft 34s linear infinite;
+}
+
+.deals-track-reverse {
+  animation-name: dealsRight;
+}
+
+.deals-row:hover .deals-track {
+  animation-play-state: paused;
+}
+
+.deal-card {
+  @apply w-[31rem] rounded-2xl border border-[#d7e1f8] bg-[#eef4ff] p-6;
+}
+
+.deal-avatar {
+  @apply inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#dbe7ff] text-xl font-semibold text-[#1d57d8];
+}
+
+@keyframes sparklePulse {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes tapPress {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  35% {
+    transform: translateY(5px);
+  }
+  55% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes tapRing {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  30% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes taskFly {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 0px) scale(0.95);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(8px, -8px) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(150px, -44px) scale(0.98);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(190px, -62px) scale(0.94);
+  }
+}
+
+@keyframes phoneFeedMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes acceptPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+}
+
+@keyframes tasksUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes tasksDown {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes dealsLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dealsRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tasks-track {
+    animation: none;
+  }
+
+  .deals-track {
+    animation: none;
+  }
+
+  .phone-feed,
+  .accept-pill {
+    animation: none;
+  }
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.card {
+  @apply rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300;
+}
+
+.card:hover {
+  @apply -translate-y-1 shadow-soft;
+}
