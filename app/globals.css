@@ -52,30 +52,57 @@ body {
 
 .phone-task-card {
   display: grid;
-  grid-template-columns: 2.6rem 1fr auto;
-  gap: 0.9rem;
+  grid-template-columns: 2.2rem 1fr auto;
+  gap: 0.6rem;
   align-items: start;
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   background: #1b1d24;
   border: 1px solid rgba(129, 150, 197, 0.18);
-  padding: 0.95rem;
+  padding: 0.72rem;
 }
 
 .phone-task-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 0.8rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.65rem;
   background: #0b1118;
   overflow: hidden;
 }
 
 .phone-task-icon img {
-  width: 1.45rem;
-  height: 1.45rem;
+  width: 1.2rem;
+  height: 1.2rem;
   object-fit: contain;
+}
+
+.phone-task-detail {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .phone-task-card {
+    grid-template-columns: 2.6rem 1fr auto;
+    gap: 0.9rem;
+    border-radius: 1.2rem;
+    padding: 0.95rem;
+  }
+
+  .phone-task-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.8rem;
+  }
+
+  .phone-task-icon img {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
 }
 
 .accept-pill {
@@ -99,8 +126,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 19rem;
-  height: 5.6rem;
+  width: min(100%, 19rem);
+  height: auto;
+  aspect-ratio: 297 / 88;
   border-radius: 0.95rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
@@ -135,8 +163,13 @@ body {
 
 @media (max-width: 640px) {
   .store-badge-image {
-    width: 16.5rem;
-    height: 4.9rem;
+    width: min(100%, 16.5rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .phone-feed-wrap {
+    height: 19.5rem;
   }
 }
 
@@ -245,7 +278,7 @@ body {
   width: max-content;
   gap: 1.2rem;
   will-change: transform;
-  animation: dealsLeft 34s linear infinite;
+  animation: dealsLeft 52s linear infinite;
 }
 
 .deals-track-reverse {
@@ -257,11 +290,11 @@ body {
 }
 
 .deal-card {
-  @apply w-[31rem] rounded-2xl border border-[#d7e1f8] bg-[#eef4ff] p-6;
+  @apply w-[18.5rem] rounded-2xl border border-[#d7e1f8] bg-[#eef4ff] p-4 sm:w-[24rem] sm:p-5 lg:w-[31rem] lg:p-6;
 }
 
 .deal-avatar {
-  @apply inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#dbe7ff] text-xl font-semibold text-[#1d57d8];
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#dbe7ff] text-lg font-semibold text-[#1d57d8] sm:h-12 sm:w-12 sm:text-xl;
 }
 
 @keyframes sparklePulse {

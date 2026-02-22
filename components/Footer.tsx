@@ -11,7 +11,7 @@ export default function Footer() {
           </p>
           <p className="mt-1 text-sm text-slate-500">Instant task marketplace for posters and taskers.</p>
         </div>
-        <nav aria-label="Footer" className="flex flex-wrap gap-4 text-sm text-slate-600">
+        <nav aria-label="Footer" className="flex w-full flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-slate-600 sm:w-auto sm:justify-start sm:gap-4">
           <a className="transition hover:text-slate-900" href="#">Privacy</a>
           <a className="transition hover:text-slate-900" href="#">Terms</a>
           <a className="transition hover:text-slate-900" href="#">Support</a>
