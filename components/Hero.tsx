@@ -1,6 +1,4 @@
 "use client";
-
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -12,25 +10,9 @@ const phoneTasks = [
 ];
 
 export default function Hero() {
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const formatTime = () =>
-      new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      });
-
-    setCurrentTime(formatTime());
-    const timer = setInterval(() => setCurrentTime(formatTime()), 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="relative overflow-hidden py-6 sm:py-8 lg:py-4">
-      <div className="section-shell relative">
+      <div className="section-shell relative max-[640px]:px-2">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,22 +22,17 @@ export default function Hero() {
           <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
 
-          <div className="relative z-20 grid items-center gap-7 lg:h-full lg:grid-cols-[400px_1fr] lg:gap-12">
+          <div className="relative z-20 grid items-center gap-7 lg:h-full lg:grid-cols-[360px_1fr] lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -18, y: 12 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
-              className="phone-shell mx-auto w-full max-w-[350px] sm:max-w-[420px]"
+              className="phone-shell order-2 mx-auto w-full max-w-[350px] sm:max-w-[420px] lg:order-1 lg:max-w-[360px]"
             >
               <div className="phone-screen">
-                <div className="flex items-center justify-between text-xs text-slate-200">
-                  <span>{currentTime}</span>
-                  <span>5G</span>
-                </div>
-                <p className="mt-5 text-lg text-cyan-400">&lt; Home</p>
-                <h3 className="mt-4 text-2xl font-bold text-white sm:text-3xl">BucketOut</h3>
+                <h3 className="text-center text-2xl font-bold text-white sm:text-3xl">BucketOut</h3>
 
-                <div className="phone-feed-wrap mt-6">
+                <div className="phone-feed-wrap mt-3">
                   <div className="phone-feed">
                     {[...phoneTasks, ...phoneTasks].map((task, idx) => (
                       <article key={`${task.title}-${idx}`} className="phone-task-card">
@@ -63,18 +40,13 @@ export default function Hero() {
                           <Image src="/logo.png" alt="" width={26} height={26} aria-hidden />
                         </div>
                         <div className="min-w-0">
-                          <p className="text-[1.12rem] font-semibold leading-tight text-white sm:text-[1.55rem]">{task.title}</p>
-                          <p className="phone-task-detail mt-1 text-[0.9rem] text-slate-400 sm:text-[1.15rem]">{task.detail}</p>
+                          <p className="text-[0.86rem] font-semibold leading-tight text-white sm:text-[1rem] lg:text-[1.08rem]">{task.title}</p>
+                          <p className="phone-task-detail mt-1 text-[0.72rem] leading-snug text-slate-400 sm:text-[0.84rem] lg:text-[0.9rem]">{task.detail}</p>
                         </div>
-                        <p className="ml-auto text-[1.35rem] font-semibold text-cyan-300 sm:text-[1.8rem]">{task.price}</p>
+                        <p className="ml-auto text-[0.98rem] font-semibold text-cyan-300 sm:text-[1.12rem] lg:text-[1.2rem]">{task.price}</p>
                       </article>
                     ))}
                   </div>
-                </div>
-
-                <div className="accept-pill">
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
-                  Task Accepted!
                 </div>
               </div>
             </motion.div>
@@ -83,14 +55,14 @@ export default function Hero() {
               initial={{ opacity: 0, x: 18, y: 12 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ duration: 0.65, ease: "easeOut", delay: 0.18 }}
-              className="min-w-0 text-center lg:text-left"
+              className="order-1 min-w-0 text-center lg:order-2 lg:text-left"
             >
-              <h1 className="text-4xl font-semibold leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-7xl">
+              <h1 className="text-3xl font-semibold leading-[1.02] tracking-tight text-white sm:text-4xl lg:text-6xl">
                 Get tasks done
                 <br />
                 <span className="text-cyan-300">instantly</span>
               </h1>
-              <p className="mt-6 max-w-3xl text-xl leading-relaxed text-white sm:text-2xl lg:text-3xl">
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white sm:text-xl lg:text-2xl">
                 Post a task. Nearby taskers arrive ready to work. No waiting, no fuss. The future of getting things done is here.
               </p>
 
@@ -102,7 +74,7 @@ export default function Hero() {
                   href="https://play.google.com/store/apps/details?id=com.bucketout.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="store-badge-image store-badge-play"
+                  className="store-badge-image"
                   aria-label="Get it on Google Play"
                 >
                   <Image
@@ -118,7 +90,7 @@ export default function Hero() {
                   href="https://apps.apple.com/au/app/bucketout/id6757649681"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="store-badge-image store-badge-app"
+                  className="store-badge-image"
                   aria-label="Download on the App Store"
                 >
                   <Image
@@ -147,3 +119,4 @@ export default function Hero() {
     </section>
   );
 }
+
