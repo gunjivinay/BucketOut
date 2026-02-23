@@ -64,11 +64,11 @@ export default function Hero() {
                 </a>
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <button className="glass-cta w-full sm:w-auto">
+              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-start">
+                <button className="glass-cta w-auto">
                   Post your task
                 </button>
-                <button className="glass-cta glass-cta-gl w-full sm:w-auto">
+                <button className="glass-cta glass-cta-gl w-auto">
                   Earn as a tasker
                 </button>
               </div>

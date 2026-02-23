@@ -56,21 +56,21 @@ export default function WhyBucketOut() {
       <div className="section-shell">
         <Reveal>
           <div className="space-y-8">
-            <h2 className="text-2xl font-bold leading-tight text-[#0b1e72] sm:text-4xl lg:text-5xl">
+            <h2 className="text-2xl font-bold leading-tight text-[#1b6f88] sm:text-4xl lg:text-5xl">
               See what others are getting done
             </h2>
           </div>
         </Reveal>
 
         <Reveal className="mt-10">
-          <div className="space-y-5">
+          <div className="relative left-1/2 w-screen -translate-x-1/2 space-y-5">
             <DealsRow cards={topRow} />
             <DealsRow cards={bottomRow} reverse />
           </div>
         </Reveal>
 
         <Reveal className="mt-10">
-          <button className="rounded-2xl bg-gradient-to-r from-[#0d4458] to-[#0f5a74] px-8 py-4 text-2xl font-semibold text-white transition hover:brightness-110">
+          <button className="mx-auto block rounded-xl bg-gradient-to-r from-[#0d4458] to-[#0f5a74] px-6 py-2.5 text-lg font-semibold text-white transition hover:brightness-110 sm:mx-0 sm:px-7 sm:py-3 sm:text-xl">
             Post your task for free
           </button>
         </Reveal>

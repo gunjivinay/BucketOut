@@ -17,7 +17,7 @@ export default function ForPosters() {
         <Reveal className="rounded-[2rem] bg-[#eef4ff] px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.3fr] lg:items-center">
             <div>
-              <h2 className="text-3xl font-bold leading-tight text-[#0b1e72] sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-bold leading-tight text-[#1b6f88] sm:text-4xl lg:text-5xl">
                 Post your first task in seconds
               </h2>
               <p className="mt-4 max-w-lg text-base text-[#10255f] sm:text-lg lg:text-xl">
@@ -33,7 +33,7 @@ export default function ForPosters() {
                   </li>
                 ))}
               </ol>
-              <button className="mt-7 rounded-2xl bg-gradient-to-r from-[#0d4458] to-[#0f5a74] px-7 py-3 text-lg font-semibold text-white transition hover:brightness-110 sm:text-xl">
+              <button className="mt-7 mx-auto block rounded-2xl bg-gradient-to-r from-[#0d4458] to-[#0f5a74] px-7 py-3 text-lg font-semibold text-white transition hover:brightness-110 sm:mx-0 sm:text-xl">
                 Post your task
               </button>
             </div>

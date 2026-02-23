@@ -5,7 +5,7 @@ export default function CTASection() {
     <section className="pb-16 sm:pb-24">
       <div className="section-shell">
         <Reveal className="rounded-2xl bg-gradient-to-r from-[#0d4458] via-[#0f4f67] to-[#12607c] px-6 py-10 text-center shadow-soft sm:px-10 sm:py-14">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-cyan-300 sm:text-4xl">
             Launch tasks faster with BucketOut
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-blue-100 sm:text-base">
