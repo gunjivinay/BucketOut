@@ -1,47 +1,14 @@
 import Reveal from "@/components/Reveal";
-
-type TaskCard = {
-  title: string;
-  subtitle: string;
-};
+import Image from "next/image";
 
 const steps = ["Describe what you need done", "Set your budget", "Receive quotes and pick the best Tasker"];
 
-const columnOne: TaskCard[] = [
-  { title: "Landscaping", subtitle: "Mulching, weeding and tidying up" },
-  { title: "Handyperson", subtitle: "Help with home maintenance" },
-  { title: "Marketing & design", subtitle: "Help with website and assets" },
-  { title: "Removalists", subtitle: "Packing, wrapping and moving" },
-  { title: "Furniture assembly", subtitle: "Flatpack assembly and disassembly" },
-  { title: "Gardening", subtitle: "Lawn care, hedge trimming and cleanup" },
+const phoneTasks = [
+  { title: "House Cleaning", detail: "Deep clean for 3-bedroom apartment", price: "$85" },
+  { title: "Furniture Assembly", detail: "Expert assembly for IKEA sets", price: "$45" },
+  { title: "Local Moving", detail: "Help with shifting boxes and furniture", price: "$120" },
+  { title: "Painting Service", detail: "Interior wall painting and touch-ups", price: "$200" },
 ];
-
-const columnTwo: TaskCard[] = [
-  { title: "Painting", subtitle: "Interior and exterior wall painting" },
-  { title: "Business & admin", subtitle: "Help with accounting and admin work" },
-  { title: "Something else", subtitle: "Wall mount art and small repairs" },
-  { title: "Home cleaning", subtitle: "Clean, mop and tidy your house" },
-  { title: "Deliveries", subtitle: "Urgent deliveries and courier services" },
-  { title: "Plumbing", subtitle: "Leaks, installs and fixture replacement" },
-];
-
-function TaskColumn({ items, extraClass }: { items: TaskCard[]; extraClass?: string }) {
-  return (
-    <div className={`tasks-track ${extraClass ?? ""}`}>
-      {[...items, ...items].map((item, idx) => (
-        <article key={`${item.title}-${idx}`} className="task-card">
-          <div className="task-thumb" aria-hidden>
-            {item.title.charAt(0)}
-          </div>
-          <div>
-            <h3 className="text-[0.84rem] font-semibold leading-tight sm:text-[0.94rem] lg:text-[1rem] text-[#0b1e72]">{item.title}</h3>
-            <p className="mt-0.5 text-[0.66rem] leading-snug sm:text-[0.74rem] lg:text-[0.8rem] text-[#5f6e9a]">{item.subtitle}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  );
-}
 
 export default function ForPosters() {
   return (
@@ -71,9 +38,27 @@ export default function ForPosters() {
               </button>
             </div>
 
-            <div className="tasks-board">
-              <TaskColumn items={columnOne} />
-              <TaskColumn items={columnTwo} extraClass="tasks-track-reverse tasks-track-delayed" />
+            <div className="phone-shell mx-auto w-full max-w-[350px] sm:max-w-[420px] lg:max-w-[400px]">
+              <div className="phone-screen">
+                <h3 className="text-center text-2xl font-bold text-white sm:text-3xl">BucketOut</h3>
+
+                <div className="phone-feed-wrap mt-3">
+                  <div className="phone-feed">
+                    {[...phoneTasks, ...phoneTasks].map((task, idx) => (
+                      <article key={`${task.title}-${idx}`} className="phone-task-card">
+                        <div className="phone-task-icon">
+                          <Image src="/logo.png" alt="" width={26} height={26} aria-hidden />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-[0.86rem] font-semibold leading-tight text-white sm:text-[1rem] lg:text-[1.08rem]">{task.title}</p>
+                          <p className="phone-task-detail mt-1 text-[0.72rem] leading-snug text-slate-400 sm:text-[0.84rem] lg:text-[0.9rem]">{task.detail}</p>
+                        </div>
+                        <p className="ml-auto text-[0.98rem] font-semibold text-cyan-300 sm:text-[1.12rem] lg:text-[1.2rem]">{task.price}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>

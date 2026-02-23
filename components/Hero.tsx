@@ -1,18 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-
-const phoneTasks = [
-  { title: "House Cleaning", detail: "Deep clean for 3-bedroom apartment", price: "$85" },
-  { title: "Furniture Assembly", detail: "Expert assembly for IKEA sets", price: "$45" },
-  { title: "Local Moving", detail: "Help with shifting boxes and furniture", price: "$120" },
-  { title: "Painting Service", detail: "Interior wall painting and touch-ups", price: "$200" },
-];
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden py-6 sm:py-8 lg:py-4">
-      <div className="section-shell relative max-[640px]:px-2">
+      <svg aria-hidden="true" className="hidden">
+        <filter id="heroGlassFilter" colorInterpolationFilters="linearRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+          <feDisplacementMap in="SourceGraphic" in2="SourceGraphic" scale="20" xChannelSelector="R" yChannelSelector="B" result="displacementMap" />
+          <feGaussianBlur stdDeviation="3 3" in="displacementMap" edgeMode="none" />
+        </filter>
+      </svg>
+      <div className="relative mx-auto w-[calc(100%-1rem)] max-w-[1700px] sm:w-[calc(100%-1.5rem)] lg:w-[calc(100%-2.5rem)]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -23,33 +21,7 @@ export default function Hero() {
           <div className="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
 
           <div className="relative z-20 grid items-center gap-7 lg:h-full lg:grid-cols-[360px_1fr] lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -18, y: 12 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
-              className="phone-shell order-2 mx-auto w-full max-w-[350px] sm:max-w-[420px] lg:order-1 lg:max-w-[360px]"
-            >
-              <div className="phone-screen">
-                <h3 className="text-center text-2xl font-bold text-white sm:text-3xl">BucketOut</h3>
-
-                <div className="phone-feed-wrap mt-3">
-                  <div className="phone-feed">
-                    {[...phoneTasks, ...phoneTasks].map((task, idx) => (
-                      <article key={`${task.title}-${idx}`} className="phone-task-card">
-                        <div className="phone-task-icon">
-                          <Image src="/logo.png" alt="" width={26} height={26} aria-hidden />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-[0.86rem] font-semibold leading-tight text-white sm:text-[1rem] lg:text-[1.08rem]">{task.title}</p>
-                          <p className="phone-task-detail mt-1 text-[0.72rem] leading-snug text-slate-400 sm:text-[0.84rem] lg:text-[0.9rem]">{task.detail}</p>
-                        </div>
-                        <p className="ml-auto text-[0.98rem] font-semibold text-cyan-300 sm:text-[1.12rem] lg:text-[1.2rem]">{task.price}</p>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <div aria-hidden className="order-2 hidden lg:order-1 lg:block lg:h-full lg:w-full lg:max-w-[360px]" />
 
             <motion.div
               initial={{ opacity: 0, x: 18, y: 12 }}
@@ -71,44 +43,32 @@ export default function Hero() {
               </p>
               <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-start">
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.bucketout.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="store-badge-image"
-                  aria-label="Get it on Google Play"
-                >
-                  <Image
-                    className="store-badge-svg"
-                    src="/google-play-badge.svg"
-                    alt="Get it on Google Play"
-                    width={297}
-                    height={88}
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </a>
-                <a
                   href="https://apps.apple.com/au/app/bucketout/id6757649681"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="store-badge-image"
+                  className="market-btn apple-btn"
                   aria-label="Download on the App Store"
                 >
-                  <Image
-                    className="store-badge-svg"
-                    src="/app-store-badge.svg"
-                    alt="Download on the App Store"
-                    width={297}
-                    height={88}
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                  <span className="market-button-subtitle">Download on the</span>
+                  <span className="market-button-title">App Store</span>
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.bucketout.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="market-btn google-btn"
+                  aria-label="Download on Google Play"
+                >
+                  <span className="market-button-subtitle">Download on the</span>
+                  <span className="market-button-title">Google Play</span>
                 </a>
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <button className="w-full rounded-xl bg-white px-7 py-3 text-sm font-semibold text-blue-700 transition hover:scale-[1.02] hover:shadow-lg sm:w-auto sm:text-base">
+                <button className="glass-cta w-full sm:w-auto">
                   Post your task
                 </button>
-                <button className="w-full rounded-xl border border-white/50 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto sm:text-base">
+                <button className="glass-cta glass-cta-gl w-full sm:w-auto">
                   Earn as a tasker
                 </button>
               </div>
