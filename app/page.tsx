@@ -13,7 +13,7 @@ import WhyBucketOut from "@/components/WhyBucketOut";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-16">
       <Header />
       <Hero />
       <Subhero />

@@ -52,7 +52,7 @@ export default function Header() {
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur"
+      className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur"
     >
       <div className="section-shell relative h-16">
         <div className="grid h-full grid-cols-[2.75rem_1fr_2.75rem] items-center md:hidden">
